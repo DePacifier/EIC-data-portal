@@ -1,0 +1,119 @@
+$input-accent: #efeeee;
+$primary-color: #3db286;
+$primart-text-color: #fff5f5;
+$secondart-text-color: #938f8f;
+
+.container {
+  height: 100vh;
+  width: 98vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8fbff;
+}
+
+.login-grid-container {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 27.313rem 36.875rem;
+  height: 36.938rem;
+  border-radius: 1.5rem;
+  background-color: #fff;
+  overflow: hidden;
+
+  h1 {
+    color: $primart-text-color;
+    line-height: 1.5rem;
+    font-size: 5rem;
+  }
+
+  h2 {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 2.375rem;
+  }
+
+  form {
+    position: relative;
+    .forgot {
+      font-size: 0.75rem;
+      color: #002bff;
+      position: absolute;
+      right: 0;
+      bottom: 3.5rem;
+    }
+  }
+
+  label {
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #716b6b;
+  }
+
+  .sign-in {
+    .content {
+      width: 70%;
+    }
+  }
+
+  .side-info {
+    // background-image: url("../../images/login-image.png");
+    box-shadow: 0 3px 6px rgba(84, 84, 84, 0.16);
+    background-position: center center;
+    background-size: 607px 615px;
+    .content {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .content {
+      h1 {
+        font-size: 2.875rem;
+        font-weight: 500;
+        font-family: Montserrat;
+        line-height: 2.875rem;
+        margin-right: 0.75rem;
+      }
+    }
+
+    .signin-title {
+      margin-bottom: 3rem;
+    }
+    .inputs {
+      height: 2.938rem;
+      width: 100%;
+      margin: 0.5rem 0 1rem 0;
+      border: 1px solid #dedede;
+      border-radius: 0.5rem;
+      padding-left: 0.938rem;
+      background-color: #fcfcfc;
+    }
+    label {
+      display: block;
+    }
+    input {
+      display: block;
+    }
+    .checkbox {
+      display: inline;
+    }
+
+    .signin-button {
+      color: $primart-text-color;
+      font-weight: bold;
+      font-size: 1rem;
+      height: 3rem;
+      width: 100%;
+      margin-top: 1rem;
+      border: $primary-color solid 1px;
+      border-radius: 200px;
+      background-color: $primary-color;
+    }
+  }
+}
