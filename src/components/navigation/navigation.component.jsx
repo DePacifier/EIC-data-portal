@@ -10,11 +10,11 @@ import { FaUserPlus, FaUserCog } from "react-icons/fa";
 import "./navigation.styles.scss";
 
 // Navigation Available based on User Authorization
-const userNavigations = {
-  "Data-Entry": {},
-  Admin: {},
-  "Super-Admin": {},
-};
+// const userNavigations = {
+//   "Data-Entry": {},
+//   Admin: {},
+//   "Super-Admin": {},
+// };
 
 export const Navigation = () => {
   const [showAdminOptions, setShowAdminOptions] = useState(false);
