@@ -15,7 +15,7 @@ import DataRequestPage from "./pages/data-requests/data-requests.page";
 import AddUserPage from "./pages/users/add/add-user.page";
 import ManageUsersPage from "./pages/users/manage/manage-user.page";
 
-import ComingSoonPage from "./pages/comingsoon/comingsoon.page";
+// import ComingSoonPage from "./pages/comingsoon/comingsoon.page";
 import ErrorPage from "./pages/error/error.page";
 
 function App() {
