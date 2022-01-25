@@ -10,14 +10,11 @@ import { Navigation } from "../navigation/navigation.component";
 
 export const Layout = () => {
   return (
-    <main>
-      <header>Header</header>
-      <div>
-        <Navigation />
-        <section>
-          <Outlet />
-        </section>
-      </div>
-    </main>
+    <div className="layout">
+      <Navigation className="navigation" />
+      <main>
+        <Outlet />
+      </main>
+    </div>
   );
 };

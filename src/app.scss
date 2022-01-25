@@ -1,4 +1,23 @@
+// Function to convert pixels to rem values
 @function toRem($value) {
   $remValue: ($value / 16) + rem;
   @return $remValue;
+}
+
+// Cover Entire Window
+.app {
+  width: 100vw;
+  height: 100vh;
+}
+
+// Grid-Centering Class
+.grid-center {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+// Link Cursor Class
+.pointer-cursor {
+  cursor: pointer;
 }

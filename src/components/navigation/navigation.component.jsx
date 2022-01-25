@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+// React-Icon Imports
+import { GoDashboard, GoDiffAdded, GoDatabase, GoInbox } from "react-icons/go";
+import { FaUserPlus, FaUserCog } from "react-icons/fa";
+
 // Style Imports
 import "./navigation.styles.scss";
 
@@ -16,66 +20,82 @@ export const Navigation = () => {
   const [showAdminOptions, setShowAdminOptions] = useState(false);
 
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) => (isActive ? "red" : "blue")}
-          >
-            Dashboard
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/add-investment"
-            className={({ isActive }) => (isActive ? "red" : "blue")}
-          >
-            Add Investment
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/data-centers"
-            className={({ isActive }) => (isActive ? "red" : "blue")}
-          >
-            Data Centers
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/data-requests"
-            className={({ isActive }) => (isActive ? "red" : "blue")}
-          >
-            Data Requests
-          </NavLink>
-        </li>
-        <li>
-          <div onClick={() => setShowAdminOptions(!showAdminOptions)}>
-            Administrator
-            {showAdminOptions ? (
-              <ul>
-                <li>
-                  <NavLink
-                    to="/admin/add-user"
-                    className={({ isActive }) => (isActive ? "red" : "blue")}
-                  >
-                    Add User
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/admin/manage-users"
-                    className={({ isActive }) => (isActive ? "red" : "blue")}
-                  >
-                    Manage Users
-                  </NavLink>
-                </li>
-              </ul>
-            ) : null}
-          </div>
-        </li>
-      </ul>
-    </nav>
+    <div className="nav-layout">
+      <img id="nav-logo" src="/eic-logo-small.png" alt="EIC Logo" />
+      <nav>
+        <ul className="nav-list">
+          <li className="nav-item">
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
+            >
+              <GoDashboard className="nav-icons" />
+              Dashboard
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              to="/add-investment"
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
+            >
+              <GoDiffAdded className="nav-icons" />
+              Add Investment
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              to="/data-centers"
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
+            >
+              <GoDatabase className="nav-icons" />
+              Data Centers
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              to="/data-requests"
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
+            >
+              <GoInbox className="nav-icons" />
+              Data Requests
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <div
+              className="drop-down"
+              onClick={() => setShowAdminOptions(!showAdminOptions)}
+            >
+              Administrator
+              {showAdminOptions ? (
+                <ul className="nav-list">
+                  <li className="nav-item">
+                    <NavLink
+                      to="/admin/add-user"
+                      className={({ isActive }) =>
+                        isActive ? "active" : "inactive"
+                      }
+                    >
+                      <FaUserPlus className="nav-icons" />
+                      Add User
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink
+                      to="/admin/manage-users"
+                      className={({ isActive }) =>
+                        isActive ? "active" : "inactive"
+                      }
+                    >
+                      <FaUserCog className="nav-icons" />
+                      Manage Users
+                    </NavLink>
+                  </li>
+                </ul>
+              ) : null}
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 };

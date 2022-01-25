@@ -1,0 +1,11 @@
+.layout {
+  height: inherit;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.content {
+  display: grid;
+  grid-template-rows: 1fr 1.87fr;
+  height: 100%;
+}

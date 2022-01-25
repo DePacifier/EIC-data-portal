@@ -1,85 +1,88 @@
 import "./home.styles.scss";
 
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
-class HomePage extends Component {
-  state = {
-    email: "",
-    password: "",
-  };
+const HomePage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  let navigate = useNavigate();
 
-  handleSubmit = (event) => {
-    // Handle forms login request
-  };
-
-  handleChange = (event) => {
-    // Handle login data values state change
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
-  handleForgotPassword = () => {
-    // Redirect User to Forgot Password Page
-    this.props.history.push("/forgot-password");
-  };
-
-  handleRequestInvestment = (event) => {
-    // Redirect User to Data Request Page
-  };
-
-  render() {
-    return (
-      <div className="container">
-        <div className="login-grid-container">
-          <div className="item sign-in">
-            <div className="content">
-              <h2 className="signin-title">Sign-In</h2>
-              <form onSubmit={this.handleSubmit}>
-                <label htmlFor="email">Email Address</label>
-                <input
-                  className="inputs"
-                  name="email"
-                  type="text"
-                  placeholder="name@example.com"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                  required
-                  autoFocus
-                  autoComplete="true"
-                />
-                <label htmlFor="password">Password</label>
-                <input
-                  className="inputs"
-                  name="password"
-                  type="password"
-                  placeholder="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                  required
-                />
-                <span className="forgot" onClick={this.handleForgotPassword}>
-                  Forgot Password ?
-                </span>
-                <input className="signin-button" type="submit" value="LOG IN" />
-              </form>
-              <button onClick={this.handleRequestInvestment}>
-                Request Investment Data
-              </button>
-            </div>
-          </div>
-          <div className="item side-info">
-            <div className="content">
-              <h1>
-                Welcome to
-                <br />
-                Minalesh Tera
-              </h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+  function handleSubmit(event) {
+    event.preventDefault();
+    navigate("/dashboard");
   }
-}
+
+  function handleForgotPassword() {
+    // Redirect User to Forgot Password Page
+  }
+
+  function handleRequestInvestment() {
+    // Redirect User to Data Request Page
+  }
+
+  return (
+    <main className="container">
+      <div className="login-grid-container">
+        <section className="item sign-in">
+          <div className="content grid-center">
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="email">Email Address</label>
+              <input
+                className="inputs"
+                name="email"
+                type="text"
+                placeholder="name@example.com"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                required
+                autoFocus
+                autoComplete="true"
+              />
+              <label htmlFor="password">Password</label>
+              <input
+                className="inputs"
+                name="password"
+                type="password"
+                placeholder="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                required
+              />
+              <input
+                className="signin-button pointer-cursor"
+                type="submit"
+                value="LOG IN"
+              />
+              <h2
+                className="forgot pointer-cursor"
+                onClick={handleForgotPassword}
+              >
+                Forgot Password ?
+              </h2>
+            </form>
+            <div className="break-line"></div>
+            <button
+              className="request-button pointer-cursor"
+              onClick={handleRequestInvestment}
+            >
+              Request Investment Data
+            </button>
+          </div>
+        </section>
+        <section className="item side-info">
+          <div className="content grid-center">
+            <img id="main-logo" src="/eic-logo-big.png" alt="EIC Big Logo" />
+            <h1>Data Portal</h1>
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+};
 
 export default HomePage;

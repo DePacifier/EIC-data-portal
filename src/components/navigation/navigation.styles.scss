@@ -1,0 +1,51 @@
+.nav-layout {
+  background-color: #000000;
+
+  #nav-logo {
+    width: 100%;
+    border-bottom: 0.5rem solid #efefef;
+  }
+
+  .nav-list {
+    list-style-type: none;
+    padding: 0 0;
+
+    .nav-item {
+      display: block;
+      font-family: Montserrat;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #000000;
+
+      .drop-down {
+        margin: 1.2rem 0 0 5rem;
+        color: #efefef;
+        line-height: 3rem;
+      }
+
+      a {
+        display: block;
+        text-decoration: none;
+        padding: 1.2rem 1rem 1.2rem 3rem;
+        line-height: 3rem;
+      }
+
+      .active {
+        background-color: #efefef;
+        color: #0a1931;
+      }
+
+      .inactive {
+        background-color: #000000;
+        color: #efefef;
+      }
+
+      .nav-icons {
+        position: relative;
+        top: 8px;
+        font-size: 2rem;
+        padding: 0 1rem;
+      }
+    }
+  }
+}
