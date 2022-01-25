@@ -2,16 +2,16 @@
 import React from "react";
 
 // Style Imports
-import "./dashboard.styles.scss";
+import "./add-investment.styles.scss";
 
 // Component Imports
 import Header from "../../components/header/header.component";
 
-const DashboardPage = () => {
+const AddInvestmentPage = () => {
   return (
     <div className="content">
       <Header
-        title="Dashboard"
+        title="Add Investment"
         userName="Abebe Debebe"
         userAuthority="Super Admin"
       />
@@ -22,4 +22,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default AddInvestmentPage;

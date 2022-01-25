@@ -2,16 +2,16 @@
 import React from "react";
 
 // Style Imports
-import "./dashboard.styles.scss";
+import "./data-requests.styles.scss";
 
 // Component Imports
 import Header from "../../components/header/header.component";
 
-const DashboardPage = () => {
+const DataRequestPage = () => {
   return (
     <div className="content">
       <Header
-        title="Dashboard"
+        title="Data Requests"
         userName="Abebe Debebe"
         userAuthority="Super Admin"
       />
@@ -22,4 +22,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default DataRequestPage;

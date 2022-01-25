@@ -2,16 +2,16 @@
 import React from "react";
 
 // Style Imports
-import "./dashboard.styles.scss";
+import "./manage-user.styles.scss";
 
 // Component Imports
-import Header from "../../components/header/header.component";
+import Header from "../../../components/header/header.component";
 
-const DashboardPage = () => {
+const ManageUsersPage = () => {
   return (
     <div className="content">
       <Header
-        title="Dashboard"
+        title="Manage Users"
         userName="Abebe Debebe"
         userAuthority="Super Admin"
       />
@@ -22,4 +22,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default ManageUsersPage;
