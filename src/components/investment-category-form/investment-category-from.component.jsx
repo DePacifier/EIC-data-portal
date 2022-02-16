@@ -57,6 +57,10 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
             >
               <TextField
                 {...register("formOfCompany")}
+                error={!!errors.formOfCompany}
+                helperText={
+                  errors.formOfCompany && errors?.formOfCompany?.message
+                }
                 select
                 label="Form of Company"
                 defaultValue={""}
@@ -70,6 +74,10 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
               </TextField>
               <TextField
                 {...register("typeOfInvestor")}
+                error={!!errors.typeOfInvestor}
+                helperText={
+                  errors.typeOfInvestor && errors?.typeOfInvestor?.message
+                }
                 select
                 label="Type of Investor"
                 defaultValue=""
@@ -89,6 +97,10 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
             >
               <TextField
                 {...register("investmentType")}
+                error={!!errors.investmentType}
+                helperText={
+                  errors.investmentType && errors?.investmentType?.message
+                }
                 select
                 label="Investment Type"
                 defaultValue=""
@@ -101,9 +113,12 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
                 ))}
               </TextField>
               <TextField
-                {...register("typeOfInvestmentLicense", {
-                  required: true,
-                })}
+                {...register("typeOfInvestmentLicense")}
+                error={!!errors.typeOfInvestmentLicense}
+                helperText={
+                  errors.typeOfInvestmentLicense &&
+                  errors?.typeOfInvestmentLicense?.message
+                }
                 select
                 label="Type of Investment License"
                 defaultValue={""}
@@ -117,9 +132,12 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
               </TextField>
             </Stack>
             <TextField
-              {...register("percentageOfForeignShare", {
-                required: true,
-              })}
+              {...register("percentageOfForeignShare")}
+              error={!!errors.percentageOfForeignShare}
+              helperText={
+                errors.percentageOfForeignShare &&
+                errors?.percentageOfForeignShare?.message
+              }
               type="number"
               label="Percentage of Foreign Share"
               InputProps={{
@@ -130,6 +148,10 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
             />
             <TextField
               {...register("economicSector")}
+              error={!!errors.economicSector}
+              helperText={
+                errors.economicSector && errors?.economicSector?.message
+              }
               select
               label="Economic Sector"
               defaultValue={""}
@@ -142,6 +164,8 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
             </TextField>
             <TextField
               {...register("sector")}
+              error={!!errors.sector}
+              helperText={errors.sector && errors?.sector?.message}
               select
               label="Sector"
               defaultValue={""}
@@ -154,6 +178,8 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
             </TextField>
             <TextField
               {...register("subsector")}
+              error={!!errors.subsector}
+              helperText={errors.subsector && errors?.subsector?.message}
               select
               label="Subsector"
               defaultValue={""}
@@ -169,6 +195,8 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
             </TextField>
             <TextField
               {...register("division")}
+              error={!!errors.division}
+              helperText={errors.division && errors?.division?.message}
               select
               label="Division"
               defaultValue={""}
@@ -187,11 +215,19 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
               multiline
               variant="filled"
               {...register("investmentActivity")}
+              error={!!errors.investmentActivity}
+              helperText={
+                errors.investmentActivity && errors?.investmentActivity?.message
+              }
               label="Investment Activity"
               minRows={2}
             />
             <TextField
               {...register("regionOfInvestment")}
+              error={!!errors.regionOfInvestment}
+              helperText={
+                errors.regionOfInvestment && errors?.regionOfInvestment?.message
+              }
               select
               defaultValue={""}
             >
@@ -206,6 +242,10 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
               variant="filled"
               maxRows={2}
               {...register("zoneOfInvestment")}
+              error={!!errors.zoneOfInvestment}
+              helperText={
+                errors.zoneOfInvestment && errors?.zoneOfInvestment?.message
+              }
               label="Zone of Investment"
             />
             <TextField
@@ -213,6 +253,11 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
               variant="filled"
               maxRows={2}
               {...register("citytownOfInvestment")}
+              error={!!errors.citytownOfInvestment}
+              helperText={
+                errors.citytownOfInvestment &&
+                errors?.citytownOfInvestment?.message
+              }
               label="City/Town of Investment"
             />
             <TextField
@@ -220,10 +265,16 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
               variant="filled"
               maxRows={2}
               {...register("weredaOfInvestment")}
+              error={!!errors.weredaOfInvestment}
+              helperText={
+                errors.weredaOfInvestment && errors?.weredaOfInvestment?.message
+              }
               label="Wereda of Investment"
             />
             <TextField
               {...register("capital")}
+              error={!!errors.capital}
+              helperText={errors.capital && errors?.capital?.message}
               label="Capital"
               InputProps={{
                 endAdornment: (
@@ -234,6 +285,10 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
             <Stack direction={"row"} spacing={2}>
               <TextField
                 {...register("sourceFromSelf")}
+                error={!!errors.sourceFromSelf}
+                helperText={
+                  errors.sourceFromSelf && errors?.sourceFromSelf?.message
+                }
                 label="Source from Self"
                 InputProps={{
                   endAdornment: (
@@ -243,6 +298,10 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
               />
               <TextField
                 {...register("sourceFromLoan")}
+                error={!!errors.sourceFromLoan}
+                helperText={
+                  errors.sourceFromLoan && errors?.sourceFromLoan?.message
+                }
                 label="Source from Loan"
                 InputProps={{
                   endAdornment: (
@@ -253,6 +312,10 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
             </Stack>
             <TextField
               {...register("landSizeRequired")}
+              error={!!errors.landSizeRequired}
+              helperText={
+                errors.landSizeRequired && errors?.landSizeRequired?.message
+              }
               label="Land Size Required"
               InputProps={{
                 endAdornment: (
