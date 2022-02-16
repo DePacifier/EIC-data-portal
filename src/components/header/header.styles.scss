@@ -4,66 +4,72 @@
 }
 
 .header {
-  margin: 0rem 2rem;
+  margin: 0 0;
+  padding: 0 1%;
   font-family: Montserrat;
   font-size: 1.25rem;
   font-weight: 400;
   display: flex;
   flex-wrap: nowrap;
-  gap: 1rem;
-  border-bottom: 0.2rem solid black;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(100, 116, 139, 0.3);
 
   .page-title {
     display: grid;
-    width: 70%;
     font-size: 3rem;
     padding-left: 3rem;
   }
 
   .user-region {
-    width: 20%;
     display: flex;
+    align-items: center;
     flex-wrap: nowrap;
     flex-direction: row;
+    gap: 6px;
 
     .region-logo {
-      width: 40%;
+      width: 55px;
+      text-align: right;
+      img {
+        width: 100%;
+      }
     }
 
     .user-details {
-      width: 60%;
       position: relative;
-      top: 0.5rem;
+      top: -5px;
 
       .user {
         display: block;
       }
 
       .name {
-        font-size: 1rem;
-        font-weight: 100;
+        font-family: Roboto;
+        font-size: 1.1rem;
+        font-weight: bolder;
       }
 
       .auth {
         font-family: Roboto;
-        font-size: 1.2rem;
-        font-weight: bolder;
+        font-size: 0.75rem;
+        font-weight: lighter;
       }
     }
   }
 
   .logout {
-    width: 7%;
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: lighter;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
 
     .icon {
-      font-size: 2rem;
-      position: relative;
-      left: 2rem;
-      padding-bottom: 0.5rem;
+      font-size: 1.4rem;
+      font-weight: bold;
     }
   }
 }

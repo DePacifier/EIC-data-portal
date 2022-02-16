@@ -3,6 +3,13 @@ $primary-color: #3db286;
 $primart-text-color: #fff5f5;
 $secondart-text-color: #938f8f;
 
+@mixin descriptionFonts {
+  color: rgb(101, 116, 139);
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
 .container {
   height: 100vh;
   width: 100vw;
@@ -14,9 +21,8 @@ $secondart-text-color: #938f8f;
   background-size: cover;
 }
 
-.login-grid-container {
+.login-flex-container {
   display: flex;
-  height: 30rem;
   overflow: hidden;
 
   h1 {
@@ -31,14 +37,6 @@ $secondart-text-color: #938f8f;
     font-size: 2.375rem;
   }
 
-  label {
-    font-family: Roboto;
-    font-size: 1.5rem;
-    margin-left: 0.3rem;
-    font-weight: 400;
-    color: #716b6b;
-  }
-
   .sign-in {
     width: 32rem;
     background-color: #efefef;
@@ -46,36 +44,26 @@ $secondart-text-color: #938f8f;
     border: 1px #efefef;
     margin-right: 6rem;
     margin-left: 3rem;
+    opacity: 0.99;
 
-    .content {
+    .login-content {
       width: 80%;
 
       form {
         width: 100%;
         margin-top: 1rem;
 
-        .forgot {
-          font-size: 1.5rem;
-          color: #4766ff;
-          text-align: center;
-          font-weight: lighter;
+        .forgot-password {
+          @include descriptionFonts;
+          span {
+            color: #1565c0;
+            cursor: pointer;
+          }
         }
       }
 
-      .request-button {
-        width: 90%;
-        height: 3rem;
-        font-size: 0.9rem;
-        font-weight: bold;
-        border-radius: 1rem;
-        border: 0px;
-        color: #fff5f5;
-        background-color: #ff4c29;
-        margin-bottom: 1.5rem;
-      }
-
       .break-line {
-        height: 0.25rem;
+        height: 0.1rem;
         width: 125%;
         background-color: #0a1931;
       }
@@ -91,51 +79,24 @@ $secondart-text-color: #938f8f;
     justify-content: center;
     align-items: center;
 
-    .content {
-      h1 {
-        font-size: 2.875rem;
-        font-weight: 500;
-        font-family: Montserrat;
+    .login-content {
+      .signin-title {
+        color: rgb(18, 24, 40);
+        font-size: 2rem;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .description {
+        @include descriptionFonts;
+        display: block;
+        margin-bottom: 1rem;
       }
 
       #main-logo {
         max-width: 100%;
       }
-    }
-
-    .signin-title {
-      margin-bottom: 3rem;
-    }
-    .inputs {
-      height: 2.938rem;
-      width: 100%;
-      margin: 0.5rem 0 1rem 0;
-      border: 1px solid #dedede;
-      border-radius: 0.5rem;
-      padding-left: 0.938rem;
-      background-color: #fcfcfc;
-    }
-    label {
-      display: block;
-    }
-    input {
-      display: block;
-    }
-    .checkbox {
-      display: inline;
-    }
-
-    .signin-button {
-      color: $primart-text-color;
-      font-weight: bold;
-      font-size: 1rem;
-      height: 3.5rem;
-      width: 60%;
-      margin-top: 1rem;
-      border: 0px;
-      border-radius: 1rem;
-      background-color: #185adb;
-      margin: 0 auto;
     }
   }
 }

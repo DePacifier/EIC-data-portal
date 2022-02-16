@@ -1,17 +1,30 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { TextField, Button, Stack } from "@mui/material";
+
 import "./home.styles.scss";
 
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+// Yup Validation and Schema Import
+import { yupResolver } from "@hookform/resolvers/yup";
+import loginSchema from "./validation-schema";
 
 const HomePage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(loginSchema),
+  });
+
   let navigate = useNavigate();
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  const onSubmit = (data) => {
+    console.log(data);
     navigate("/dashboard");
-  }
+  };
 
   function handleForgotPassword() {
     // Redirect User to Forgot Password Page
@@ -23,59 +36,57 @@ const HomePage = () => {
 
   return (
     <main className="container">
-      <div className="login-grid-container">
+      <div className="login-flex-container">
         <section className="item sign-in">
-          <div className="content grid-center">
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="email">Email Address</label>
-              <input
-                className="inputs"
-                name="email"
-                type="text"
-                placeholder="name@example.com"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                required
-                autoFocus
-                autoComplete="true"
-              />
-              <label htmlFor="password">Password</label>
-              <input
-                className="inputs"
-                name="password"
-                type="password"
-                placeholder="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                required
-              />
-              <input
-                className="signin-button pointer-cursor"
+          <div className="login-content grid-center">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <h2 className="signin-title">Sign in</h2>
+              <span className="description">Sign in with email address</span>
+              <Stack spacing={2}>
+                <TextField
+                  error={!!errors.email}
+                  helperText={errors.email && errors?.email?.message}
+                  {...register("email")}
+                  label="Email"
+                  autoFocus
+                />
+                <TextField
+                  type="password"
+                  label="Password"
+                  {...register("password")}
+                  error={!!errors.password}
+                  helperText={errors.password && errors?.password?.message}
+                />
+              </Stack>
+              <Button
+                fullWidth
+                variant="contained"
+                size="large"
+                sx={{ mt: 2 }}
                 type="submit"
-                value="LOG IN"
-              />
-              <h2
-                className="forgot pointer-cursor"
-                onClick={handleForgotPassword}
               >
-                Forgot Password ?
-              </h2>
+                Submit
+              </Button>
+
+              <p className="forgot-password">
+                Forgot Password ?{" "}
+                <span onClick={handleForgotPassword}>Reset Password</span>
+              </p>
             </form>
             <div className="break-line"></div>
-            <button
-              className="request-button pointer-cursor"
+            <Button
+              fullWidth
+              variant="contained"
+              color="secondary"
+              sx={{ mb: 1 }}
               onClick={handleRequestInvestment}
             >
               Request Investment Data
-            </button>
+            </Button>
           </div>
         </section>
         <section className="item side-info">
-          <div className="content grid-center">
+          <div className="login-content grid-center">
             <img id="main-logo" src="/eic-logo-big.png" alt="EIC Big Logo" />
             <h1>Data Portal</h1>
           </div>

@@ -17,8 +17,6 @@ import "./navigation.styles.scss";
 // };
 
 export const Navigation = () => {
-  const [showAdminOptions, setShowAdminOptions] = useState(false);
-
   return (
     <div className="nav-layout">
       <img id="nav-logo" src="/eic-logo-small.png" alt="EIC Logo" />
@@ -61,38 +59,22 @@ export const Navigation = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <div
-              className="drop-down"
-              onClick={() => setShowAdminOptions(!showAdminOptions)}
+            <NavLink
+              to="/admin/add-user"
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
             >
-              Administrator
-              {showAdminOptions ? (
-                <ul className="nav-list">
-                  <li className="nav-item">
-                    <NavLink
-                      to="/admin/add-user"
-                      className={({ isActive }) =>
-                        isActive ? "active" : "inactive"
-                      }
-                    >
-                      <FaUserPlus className="nav-icons" />
-                      Add User
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink
-                      to="/admin/manage-users"
-                      className={({ isActive }) =>
-                        isActive ? "active" : "inactive"
-                      }
-                    >
-                      <FaUserCog className="nav-icons" />
-                      Manage Users
-                    </NavLink>
-                  </li>
-                </ul>
-              ) : null}
-            </div>
+              <FaUserPlus className="nav-icons" />
+              Add User
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              to="/admin/manage-users"
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
+            >
+              <FaUserCog className="nav-icons" />
+              Manage Users
+            </NavLink>
           </li>
         </ul>
       </nav>

@@ -1,21 +1,25 @@
 .nav-layout {
-  background-color: #000000;
+  background-color: #111827;
 
   #nav-logo {
-    width: 100%;
-    border-bottom: 0.5rem solid #efefef;
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    border-bottom: 2px solid rgb(45, 55, 72);
   }
 
   .nav-list {
     list-style-type: none;
-    padding: 0 0;
+    padding: 5% 5% 0 5%;
 
     .nav-item {
       display: block;
       font-family: Montserrat;
-      font-size: 1.25rem;
-      font-weight: 400;
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: left;
       color: #000000;
+      margin: 0.5rem 0;
 
       .drop-down {
         margin: 1.2rem 0 0 2rem;
@@ -34,19 +38,27 @@
       }
 
       .active {
-        background-color: #efefef;
-        color: #0a1931;
+        background-color: rgba(255, 255, 255, 0.08);
+        color: #10b981;
+        border-radius: 8px;
       }
 
       .inactive {
-        background-color: #000000;
-        color: #efefef;
+        background-color: #111827;
+        color: #d1d5db;
+        border-radius: 8px;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.08);
+          transition: 1s ease;
+        }
       }
 
       .nav-icons {
+        box-sizing: content-box;
         position: relative;
-        top: 8px;
-        font-size: 2rem;
+        top: 3px;
+        font-size: 1.1rem;
         padding: 0 1rem;
       }
     }

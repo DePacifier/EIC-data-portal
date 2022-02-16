@@ -1,3 +1,10 @@
+// Colors
+$base-color: #111827;
+$base-color-separator: #2d3748;
+$base-color-hover: #242a38;
+$base-font-accent: #10b981;
+$base-font: #d1d5db;
+
 // Function to convert pixels to rem values
 @function toRem($value) {
   $remValue: ($value / 16) + rem;
