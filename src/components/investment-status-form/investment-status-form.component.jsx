@@ -42,6 +42,7 @@ function InvestmentStatusForm({ onBack, onSubmit }) {
 
   return (
     <form className="invest-form" onSubmit={handleSubmit(onSubmit)}>
+      <span className="form-page-title">Status Information</span>
       <section className="form-page">
         <section className="left">
           <Stack spacing={2}>
