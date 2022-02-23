@@ -4,9 +4,6 @@ import React from "react";
 // Style Imports
 import "./manage-user.styles.scss";
 
-// Component Imports
-import Header from "../../../components/header/header.component";
-
 const ManageUsersPage = () => {
   return (
     <section className="page-container">

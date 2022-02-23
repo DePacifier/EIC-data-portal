@@ -4,9 +4,6 @@ import React from "react";
 // Style Imports
 import "./add-user.styles.scss";
 
-// Component Imports
-import Header from "../../../components/header/header.component";
-
 const AddUserPage = () => {
   return (
     <section className="page-container">

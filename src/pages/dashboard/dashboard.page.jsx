@@ -4,9 +4,6 @@ import React from "react";
 // Style Imports
 import "./dashboard.styles.scss";
 
-// Component Imports
-import Header from "../../components/header/header.component";
-
 const DashboardPage = () => {
   return (
     <section className="page-container">
