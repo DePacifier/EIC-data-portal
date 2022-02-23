@@ -10,7 +10,17 @@ import {
   InputLabel,
   Select,
   OutlinedInput,
+  FormHelperText,
+  Paper,
+  Chip,
+  styled,
 } from "@mui/material";
+
+// Styles Import
+import "./investment-status-form.styles.scss";
+
+// Component Imports
+import AddExpatriots from "../add-expatriots/add-expatriots.component";
 
 // Yup Validation and Schema Import
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -21,27 +31,81 @@ import { regions } from "../../mock/mock-select-data";
 
 // Option values
 const investmentStatuses = [
-  "Pre-implementation",
   "Implementation",
   "Operational",
+  "Multi-regional",
+  "Cancellation",
+  "Capital Change",
+  "Project Address Change",
+  "Investor Name Change",
+  "Activity Change",
+  "Status Change",
+  "Expatriate Employees",
+  "Other Changes",
 ];
 
 function InvestmentStatusForm({ onBack, onSubmit }) {
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors },
     control,
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      tradeLicenseRegions: [],
+      licenseRegions: [],
+      expatriotEmployees: [],
     },
     resolver: yupResolver(statusSchema),
   });
 
+  const [terminateValue, expatriotEmployeesValue] = watch([
+    "terminate",
+    "expatriotEmployees",
+  ]);
+
+  const mysubmit = (data) => {
+    console.log(data);
+    console.log("called");
+  };
+
+  const ListItem = styled("li")(({ theme }) => ({
+    margin: theme.spacing(0.5),
+  }));
+
+  // Handle Expatriot Employees Add Form
+  const handleAddExpat = (newExpatItem) => {
+    console.log(newExpatItem);
+    if (
+      expatriotEmployeesValue.filter(
+        (expatriotItem) => expatriotItem === newExpatItem
+      ).length === 0
+    ) {
+      setValue("expatriotEmployees", [
+        ...expatriotEmployeesValue,
+        newExpatItem,
+      ]);
+    }
+  };
+
+  // Handle Chip Deletion
+  const handleDelete = (chipToDelete) => () => {
+    console.log(chipToDelete);
+    setValue(
+      "expatriotEmployees",
+      expatriotEmployeesValue.filter(
+        (expatriotItem) => expatriotItem !== chipToDelete
+      )
+    );
+  };
+
   return (
-    <form className="invest-form" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="invest-form"
+      onSubmit={handleSubmit(mysubmit, () => console.log("invalid state"))}
+    >
       <span className="form-page-title">Status Information</span>
       <section className="form-page">
         <section className="left">
@@ -102,6 +166,7 @@ function InvestmentStatusForm({ onBack, onSubmit }) {
                 <MenuItem value={true}>Yes</MenuItem>
               </TextField>
               <TextField
+                disabled={!(terminateValue === true)}
                 error={!!errors.dateOfTermination}
                 helperText={
                   errors.dateOfTermination && errors?.dateOfTermination?.message
@@ -142,22 +207,45 @@ function InvestmentStatusForm({ onBack, onSubmit }) {
         </section>
         <section className="right">
           <Stack spacing={2}>
+            <Paper
+              sx={{
+                display: "flex",
+                justifyContent: "left",
+                flexWrap: "wrap",
+                listStyle: "none",
+                p: 0.5,
+                m: 0,
+              }}
+              component="ul"
+            >
+              {expatriotEmployeesValue.length > 0 ? (
+                expatriotEmployeesValue.map((data, idx) => (
+                  <ListItem key={data.idx}>
+                    <Chip label={data} onDelete={handleDelete(data)} />
+                  </ListItem>
+                ))
+              ) : (
+                <ListItem>
+                  <Chip
+                    label={
+                      "Use Inputs below to add Expatriot Employees here ..."
+                    }
+                  />
+                </ListItem>
+              )}
+            </Paper>
+            <AddExpatriots submissionHandle={handleAddExpat} />
             <Controller
-              name="tradeLicenseRegions"
+              name="licenseRegions"
               control={control}
               render={({ field }) => (
-                <FormControl>
-                  <InputLabel>Trade License Regions</InputLabel>
+                <FormControl error={!!errors.licenseRegions}>
+                  <InputLabel>License Regions</InputLabel>
                   <Select
-                    error={!!errors.tradeLicenseRegions}
-                    helperText={
-                      errors.tradeLicenseRegions &&
-                      errors?.tradeLicenseRegions?.message
-                    }
                     {...field}
                     multiple
                     input={<OutlinedInput label="Trade License Regions" />}
-                    defaultValue={""}
+                    defaultValue={[]}
                   >
                     {regions.map((region) => (
                       <MenuItem key={region.code} value={region.code}>
@@ -165,20 +253,13 @@ function InvestmentStatusForm({ onBack, onSubmit }) {
                       </MenuItem>
                     ))}
                   </Select>
+                  <FormHelperText>
+                    {errors.licenseRegions
+                      ? errors?.licenseRegions?.message
+                      : "Can select multiple regions"}
+                  </FormHelperText>
                 </FormControl>
               )}
-            />
-            <TextField
-              error={!!errors.dateTradeLicense}
-              helperText={
-                errors.dateTradeLicense && errors?.dateTradeLicense?.message
-              }
-              {...register("dateTradeLicense")}
-              type="date"
-              label="Date Trade License"
-              InputLabelProps={{
-                shrink: true,
-              }}
             />
             <Stack
               direction={"row"}
@@ -216,25 +297,6 @@ function InvestmentStatusForm({ onBack, onSubmit }) {
                 fullWidth
               />
             </Stack>
-            <TextField
-              error={!!errors.tinNumber}
-              helperText={errors.tinNumber && errors?.tinNumber?.message}
-              {...register("tinNumber", {
-                required: true,
-              })}
-              label="TIN Number"
-            />
-            <TextField
-              error={!!errors.grossOutputPerMonth}
-              helperText={
-                errors.grossOutputPerMonth &&
-                errors?.grossOutputPerMonth?.message
-              }
-              {...register("grossOutputPerMonth", {
-                required: true,
-              })}
-              label="Gross Output per Month"
-            />
           </Stack>
         </section>
       </section>
@@ -244,7 +306,11 @@ function InvestmentStatusForm({ onBack, onSubmit }) {
           Back
         </Button>
 
-        <Button type="submit" size="large">
+        <Button
+          type="submit"
+          size="large"
+          onClick={() => console.log("clicked")}
+        >
           Submit
         </Button>
       </div>

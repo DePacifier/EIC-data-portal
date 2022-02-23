@@ -4,11 +4,9 @@ import React, { useState, useEffect } from "react";
 // Style Imports
 import "./add-investment.styles.scss";
 
-// Component Imports
-import Header from "../../components/header/header.component";
 // Form Components
 import InvestmentGeneralForm from "../../components/investment-general-form/investment-general-form.component";
-import InvestmentCategoryForm from "../../components/investment-category-form/investment-category-from.component";
+import InvestmentCategoryForm from "../../components/investment-category-form/investment-category-form.component";
 import InvestmentStatusForm from "../../components/investment-status-form/investment-status-form.component";
 
 const AddInvestmentPage = () => {
@@ -36,25 +34,18 @@ const AddInvestmentPage = () => {
   };
 
   return (
-    <div className="content">
-      <Header
-        title="Add Investment"
-        userName="Abebe Debebe"
-        userAuthority="Super Admin"
-      />
-      <section className="form-container">
-        <h4 className="form-title">Add Investment</h4>
-        {pageStatus === 0 ? (
-          <InvestmentGeneralForm onSubmit={onNextSubmit} />
-        ) : null}
-        {pageStatus === 1 ? (
-          <InvestmentCategoryForm onBack={onBack} onSubmit={onNextSubmit} />
-        ) : null}
-        {pageStatus === 2 ? (
-          <InvestmentStatusForm onBack={onBack} onSubmit={onSubmit} />
-        ) : null}
-      </section>
-    </div>
+    <section className="form-container">
+      <h4 className="form-title">Add Investment</h4>
+      {pageStatus === 0 ? (
+        <InvestmentGeneralForm onSubmit={onNextSubmit} />
+      ) : null}
+      {pageStatus === 1 ? (
+        <InvestmentCategoryForm onBack={onBack} onSubmit={onNextSubmit} />
+      ) : null}
+      {pageStatus === 2 ? (
+        <InvestmentStatusForm onBack={onBack} onSubmit={onSubmit} />
+      ) : null}
+    </section>
   );
 };
 

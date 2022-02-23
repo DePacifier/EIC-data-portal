@@ -15,7 +15,7 @@ function InvestmentGeneralForm({ onSubmit }) {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    mode: "onChange",
+    mode: "all",
     resolver: yupResolver(generalSchema),
   });
 
@@ -34,11 +34,13 @@ function InvestmentGeneralForm({ onSubmit }) {
             <TextField
               {...register("permitNumber")}
               error={!!errors.permitNumber}
-              {...register("permitNumber")}
+              helperText={errors.permitNumber && errors?.permitNumber?.message}
               label="Permit Number"
             />
             <TextField
               {...register("dateOfPermit")}
+              error={!!errors.dateOfPermit}
+              helperText={errors.dateOfPermit && errors?.dateOfPermit?.message}
               type="date"
               label="Date of Permit"
               defaultValue={""}
@@ -47,11 +49,18 @@ function InvestmentGeneralForm({ onSubmit }) {
               }}
             />
             <TextField
+              error={!!errors.tinNumber}
+              helperText={errors.tinNumber && errors?.tinNumber?.message}
+              {...register("tinNumber", {
+                required: true,
+              })}
+              label="TIN Number"
+            />
+            <TextField
               {...register("licensingOffice")}
               select
               label="Licensing Office"
               defaultValue={""}
-              helperText="Please select the Licensing Office where the Permit is registered at."
             >
               {regions.map((office) => (
                 <MenuItem key={office.code} value={office.region}>
@@ -63,13 +72,13 @@ function InvestmentGeneralForm({ onSubmit }) {
         </section>
         <section className="right">
           <Stack spacing={2}>
-            <TextField
-              {...register("nameOfInvestor")}
-              label="Name of Investor"
-            />
             <Stack direction={"row"} spacing={2}>
               <TextField
                 {...register("countryOfOrigin")}
+                error={!!errors.countryOfOrigin}
+                helperText={
+                  errors.countryOfOrigin && errors?.countryOfOrigin?.message
+                }
                 select
                 label="Country of Origin"
                 defaultValue="Ethiopia"
@@ -83,6 +92,11 @@ function InvestmentGeneralForm({ onSubmit }) {
               </TextField>
               <TextField
                 {...register("countryOfRegistration")}
+                error={!!errors.countryOfRegistration}
+                helperText={
+                  errors.countryOfRegistration &&
+                  errors?.countryOfRegistration?.message
+                }
                 select
                 label="Country of Registration"
                 defaultValue="Ethiopia"
@@ -97,7 +111,9 @@ function InvestmentGeneralForm({ onSubmit }) {
             </Stack>
             <TextField
               select
-              {...register("Nationality")}
+              {...register("nationality")}
+              error={!!errors.nationality}
+              helperText={errors.nationality && errors?.nationality?.message}
               label="Nationality"
               defaultValue="Ethiopian"
             >
@@ -109,13 +125,34 @@ function InvestmentGeneralForm({ onSubmit }) {
             </TextField>
             <TextField
               {...register("phoneNumber")}
+              error={!!errors.phoneNumber}
+              helperText={errors.phoneNumber && errors?.phoneNumber?.message}
               label="Phone Number"
               type="tel"
             />
-            <TextField {...register("email")} label="Email" type="email" />
+            <TextField
+              {...register("email")}
+              error={!!errors.email}
+              helperText={errors.email && errors?.email?.message}
+              label="Email"
+              type="email"
+            />
             <Stack direction={"row"} spacing={2}>
-              <TextField {...register("post")} label="Post" />
-              <TextField {...register("fax")} label="Fax" type="tel" />
+              <TextField
+                {...register("post")}
+                error={!!errors.post}
+                helperText={errors.post && errors?.post?.message}
+                label="Post"
+                fullWidth
+              />
+              <TextField
+                {...register("fax")}
+                error={!!errors.fax}
+                helperText={errors.fax && errors?.fax?.message}
+                label="Fax"
+                type="tel"
+                fullWidth
+              />
             </Stack>
           </Stack>
         </section>

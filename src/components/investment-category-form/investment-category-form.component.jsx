@@ -38,11 +38,26 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({
-    mode: "onChange",
+    mode: "all",
     resolver: yupResolver(categorySchema),
   });
+
+  const [
+    // economicSectorValue,
+    sectorValue,
+    subsectorValue,
+    capitalValue,
+    sourceFromSelfValue,
+  ] = watch([
+    // "economicSector",
+    "sector",
+    "subsector",
+    "capital",
+    "sourceFromSelf",
+  ]);
 
   return (
     <form className="invest-form" onSubmit={handleSubmit(onSubmit)}>
@@ -50,6 +65,14 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
       <section className="form-page">
         <section className="left">
           <Stack spacing={2}>
+            <TextField
+              {...register("nameOfInvestor")}
+              error={!!errors.nameOfInvestor}
+              helperText={
+                errors.nameOfInvestor && errors?.nameOfInvestor?.message
+              }
+              label="Name of Investor/Company"
+            />
             <Stack
               direction={"row"}
               spacing={2}
@@ -163,7 +186,9 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
               ))}
             </TextField>
             <TextField
-              {...register("sector")}
+              {...register("sector", {
+                onChange: (e) => console.log(e.target.value),
+              })}
               error={!!errors.sector}
               helperText={errors.sector && errors?.sector?.message}
               select
@@ -184,14 +209,20 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
               label="Subsector"
               defaultValue={""}
             >
-              {subsectors.map((subsector) => (
-                <MenuItem
-                  key={subsector.subsector_code}
-                  value={subsector.subsector_code}
-                >
-                  {subsector.description}
-                </MenuItem>
-              ))}
+              {sectorValue !== undefined ? (
+                subsectors
+                  .filter((subsector) => subsector.sector_code === sectorValue)
+                  .map((filterSubsector) => (
+                    <MenuItem
+                      key={filterSubsector.subsector_code}
+                      value={filterSubsector.subsector_code}
+                    >
+                      {filterSubsector.description}
+                    </MenuItem>
+                  ))
+              ) : (
+                <MenuItem value={""}>Please select a sector first ...</MenuItem>
+              )}
             </TextField>
             <TextField
               {...register("division")}
@@ -201,11 +232,19 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
               label="Division"
               defaultValue={""}
             >
-              {groups.map((group) => (
-                <MenuItem key={group.group_code} value={group.group_code}>
-                  {group.description}
+              {sectorValue !== undefined ? (
+                groups
+                  .filter((group) => group.subsector_code === subsectorValue)
+                  .map((group) => (
+                    <MenuItem key={group.group_code} value={group.group_code}>
+                      {group.description}
+                    </MenuItem>
+                  ))
+              ) : (
+                <MenuItem value={""}>
+                  Please select a subsector first ...
                 </MenuItem>
-              ))}
+              )}
             </TextField>
           </Stack>
         </section>
@@ -230,6 +269,7 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
               }
               select
               defaultValue={""}
+              label="Region(s) of Investment"
             >
               {regions.map((region) => (
                 <MenuItem key={region.code} value={region.code}>
@@ -290,6 +330,7 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
                   errors.sourceFromSelf && errors?.sourceFromSelf?.message
                 }
                 label="Source from Self"
+                fullWidth
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="start">Birr</InputAdornment>
@@ -297,17 +338,27 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
                 }}
               />
               <TextField
-                {...register("sourceFromLoan")}
+                {...register("sourceFromLoan", {
+                  deps: ["capital", "sourceFromSelf"],
+                })}
                 error={!!errors.sourceFromLoan}
                 helperText={
                   errors.sourceFromLoan && errors?.sourceFromLoan?.message
                 }
+                disabled
                 label="Source from Loan"
+                fullWidth
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="start">Birr</InputAdornment>
                   ),
                 }}
+                value={
+                  capitalValue !== undefined &&
+                  sourceFromSelfValue !== undefined
+                    ? capitalValue - sourceFromSelfValue
+                    : ""
+                }
               />
             </Stack>
             <TextField

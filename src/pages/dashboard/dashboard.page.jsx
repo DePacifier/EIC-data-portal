@@ -9,16 +9,9 @@ import Header from "../../components/header/header.component";
 
 const DashboardPage = () => {
   return (
-    <div className="content">
-      <Header
-        title="Dashboard"
-        userName="Abebe Debebe"
-        userAuthority="Super Admin"
-      />
-      <section className="grid-center">
-        <h1>Coming Soon</h1>
-      </section>
-    </div>
+    <section className="grid-center">
+      <h1>Coming Soon</h1>
+    </section>
   );
 };
 
