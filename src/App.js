@@ -10,12 +10,10 @@ import HomePage from "./pages/home/home.page";
 import DashboardPage from "./pages/dashboard/dashboard.page";
 import { Layout } from "./components/layout/layout.component";
 import AddInvestmentPage from "./pages/add-investment/add-investment.page";
-import DataCenterPage from "./pages/data-centers/data-centers.page";
+import DataCenterPage from "./pages/data-center/data-center.page";
 import DataRequestPage from "./pages/data-requests/data-requests.page";
 import AddUserPage from "./pages/users/add/add-user.page";
 import ManageUsersPage from "./pages/users/manage/manage-user.page";
-
-// import ComingSoonPage from "./pages/comingsoon/comingsoon.page";
 import ErrorPage from "./pages/error/error.page";
 
 function App() {
@@ -33,7 +31,7 @@ function App() {
             (Authorization Based Routes) (AddInvestmentPage)
             <Route path="/add-investment" element={<AddInvestmentPage />} />
             (DataCentersPage)
-            <Route path="/data-centers" element={<DataCenterPage />} />
+            <Route path="/data-center" element={<DataCenterPage />} />
             (DataRequestsPage)
             <Route path="/data-requests" element={<DataRequestPage />} />
             (AddUserPage)

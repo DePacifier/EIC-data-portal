@@ -9,7 +9,8 @@ import Header from "../../../components/header/header.component";
 
 const AddUserPage = () => {
   return (
-    <section className="grid-center">
+    <section className="page-container">
+      <h4 className="page-title">Add User</h4>
       <h1>Coming Soon</h1>
     </section>
   );

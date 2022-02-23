@@ -42,11 +42,11 @@ export const Navigation = () => {
           </li>
           <li className="nav-item">
             <NavLink
-              to="/data-centers"
+              to="/data-center"
               className={({ isActive }) => (isActive ? "active" : "inactive")}
             >
               <GoDatabase className="nav-icons" />
-              Data Centers
+              Data Center
             </NavLink>
           </li>
           <li className="nav-item">
