@@ -15,7 +15,6 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import requestFormSchema from "./validation-schema";
-import { number } from "yup/lib/locale";
 
 // Select-Data
 const modalities = ["Hardcopy", "Email", "Telephone", "Softcopy"];
