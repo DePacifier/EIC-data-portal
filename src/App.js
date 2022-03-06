@@ -14,6 +14,7 @@ import DataCenterPage from "./pages/data-center/data-center.page";
 import DataRequestPage from "./pages/data-requests/data-requests.page";
 import AddUserPage from "./pages/users/add/add-user.page";
 import ManageUsersPage from "./pages/users/manage/manage-user.page";
+import RequestData from "./pages/request-data/request-data.page";
 import ErrorPage from "./pages/error/error.page";
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
         <Routes>
           (Public Paths)
           <Route path="/" element={<HomePage />} />
-          <Route path="/request-data" element={<HomePage />} />
+          <Route path="/request-data" element={<RequestData />} />
           (Similar Layout Pages)
           <Route element={<Layout />}>
             (Common Authenticated Routes) (DashboardPage)

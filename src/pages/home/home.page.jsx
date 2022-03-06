@@ -32,6 +32,7 @@ const HomePage = () => {
 
   function handleRequestInvestment() {
     // Redirect User to Data Request Page
+    navigate("/request-data");
   }
 
   return (
