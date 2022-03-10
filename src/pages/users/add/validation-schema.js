@@ -2,7 +2,10 @@ import * as yup from "yup";
 import "yup-phone";
 
 const addUserFormSchema = yup.object().shape({
-  name: yup.string().required("User's name is required!"),
+  name: yup
+    .string()
+    .required("User's name is required!")
+    .matches(/^[aA-zZ\s]+$/, "Only alphabets(a-z|A-Z) are allowed!"),
   email: yup
     .string()
     .email("Please enter a valid email!")

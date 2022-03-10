@@ -17,34 +17,40 @@ import ManageUsersPage from "./pages/users/manage/manage-user.page";
 import RequestData from "./pages/request-data/request-data.page";
 import ErrorPage from "./pages/error/error.page";
 
+// Mui Theme
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+const theme = createTheme();
+
 function App() {
   return (
-    <main className="app">
-      <BrowserRouter>
-        <Routes>
-          (Public Paths)
-          <Route path="/" element={<HomePage />} />
-          <Route path="/request-data" element={<RequestData />} />
-          (Similar Layout Pages)
-          <Route element={<Layout />}>
-            (Common Authenticated Routes) (DashboardPage)
-            <Route path="/dashboard" element={<DashboardPage />} />
-            (Authorization Based Routes) (AddInvestmentPage)
-            <Route path="/add-investment" element={<AddInvestmentPage />} />
-            (DataCentersPage)
-            <Route path="/data-center" element={<DataCenterPage />} />
-            (DataRequestsPage)
-            <Route path="/data-requests" element={<DataRequestPage />} />
-            (AddUserPage)
-            <Route path="/admin/add-user" element={<AddUserPage />} />
-            (ManageUsersPage)
-            <Route path="/admin/manage-users" element={<ManageUsersPage />} />
-          </Route>
-          (Page Not Found Page)
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </BrowserRouter>
-    </main>
+    <ThemeProvider theme={theme}>
+      <main className="app">
+        <BrowserRouter>
+          <Routes>
+            (Public Paths)
+            <Route path="/" element={<HomePage />} />
+            <Route path="/request-data" element={<RequestData />} />
+            (Similar Layout Pages)
+            <Route element={<Layout />}>
+              (Common Authenticated Routes) (DashboardPage)
+              <Route path="/dashboard" element={<DashboardPage />} />
+              (Authorization Based Routes) (AddInvestmentPage)
+              <Route path="/add-investment" element={<AddInvestmentPage />} />
+              (DataCentersPage)
+              <Route path="/data-center" element={<DataCenterPage />} />
+              (DataRequestsPage)
+              <Route path="/data-requests" element={<DataRequestPage />} />
+              (AddUserPage)
+              <Route path="/admin/add-user" element={<AddUserPage />} />
+              (ManageUsersPage)
+              <Route path="/admin/manage-users" element={<ManageUsersPage />} />
+            </Route>
+            (Page Not Found Page)
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </BrowserRouter>
+      </main>
+    </ThemeProvider>
   );
 }
 
