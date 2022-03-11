@@ -357,7 +357,7 @@ function InvestmentCategoryForm({ onBack, onSubmit }) {
                   capitalValue !== undefined &&
                   sourceFromSelfValue !== undefined
                     ? capitalValue - sourceFromSelfValue
-                    : ""
+                    : 0
                 }
               />
             </Stack>

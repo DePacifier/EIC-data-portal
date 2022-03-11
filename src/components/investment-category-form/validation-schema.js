@@ -13,45 +13,47 @@ const categorySchema = yup.object().shape({
     .min(0, "Percentage cannot be below 0%")
     .max(100, "Percentage cannot be above 100%")
     .typeError("Please insert a valid Foreign Share Percentage value!")
-    .required("File number is required!"),
-  economicSector: yup.string().required("File number is required!"),
+    .required("Percentage of Foreign Share of the Investment is required!"),
+  economicSector: yup
+    .string()
+    .required("Investment's economic sector category is required!"),
   sector: yup
     .string()
     .typeError("Please select a valid sector!")
-    .required("File number is required!"),
+    .required("Investment's sector category is required!"),
   subsector: yup
     .string()
     .typeError("Please select a valid sub-sector!")
-    .required("File number is required!"),
+    .required("Investment's sub-sector category is required!"),
   division: yup
     .string()
     .typeError("Please select a valid division!")
-    .required("File number is required!"),
-  investmentActivity: yup.string().typeError().min(200).max(1000).required(),
-  regionOfInvestment: yup.string().required("File number is required!"),
+    .required("Investment's division category is required!"),
+  investmentActivity: yup.string().typeError().min(20).max(200).required(),
+  regionOfInvestment: yup.string().required("Region of Investment required!"),
   zoneOfInvestment: yup
     .string()
     .typeError()
     .min(3)
     .max(37)
-    .required("File number is required!"),
+    .required("Zone of Investment required!"),
   citytownOfInvestment: yup
     .string()
     .typeError()
     .min(3)
     .max(37)
-    .required("File number is required!"),
+    .required("City or Town of Investment required!"),
   weredaOfInvestment: yup
     .string()
     .typeError()
     .min(3)
     .max(37)
-    .required("File number is required!"),
+    .required("Wereda of Investment is required!"),
   capital: yup
     .number()
     .positive()
     .typeError()
-    .required("File number is required!"),
+    .required("Capital of Investment is required!"),
   sourceFromSelf: yup
     .number()
     .test(
@@ -61,17 +63,17 @@ const categorySchema = yup.object().shape({
     )
     .positive()
     .typeError()
-    .required("File number is required!"),
+    .required("Capital provided personally is required!"),
   sourceFromLoan: yup
     .number()
     .min(0)
     .typeError()
-    .required("File number is required!"),
+    .required("Capital provided from loan is required!"),
   landSizeRequired: yup
     .number()
     .positive()
     .typeError()
-    .required("File number is required!"),
+    .required("Land Size is required!"),
 });
 
 export default categorySchema;

@@ -28,6 +28,7 @@ const HomePage = () => {
 
   function handleForgotPassword() {
     // Redirect User to Forgot Password Page
+    navigate("/forget-password");
   }
 
   function handleRequestInvestment() {
@@ -70,8 +71,7 @@ const HomePage = () => {
               </Button>
 
               <p className="forgot-password">
-                Forgot Password ?{" "}
-                <span onClick={handleForgotPassword}>Reset Password</span>
+                <span onClick={handleForgotPassword}>Forgot Password ?</span>
               </p>
             </form>
             <div className="break-line"></div>

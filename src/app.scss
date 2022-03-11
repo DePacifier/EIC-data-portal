@@ -4,6 +4,7 @@ $base-color-separator: #2d3748;
 $base-color-hover: #242a38;
 $base-font-accent: #10b981;
 $base-font: #d1d5db;
+$light-grey-background-color: #fafafa;
 
 // Function to convert pixels to rem values
 @function toRem($value) {
@@ -22,6 +23,19 @@ $base-font: #d1d5db;
   height: 100%;
   display: grid;
   place-items: center;
+}
+
+// Paper-Centering Class
+.paper-center {
+  padding: 4rem 0rem;
+  width: 40%;
+  display: grid;
+  place-items: center;
+}
+
+// Light Grey Background Color Class
+.light-grey-bg {
+  background-color: $light-grey-background-color;
 }
 
 // Link Cursor Class
