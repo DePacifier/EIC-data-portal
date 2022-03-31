@@ -1,6 +1,6 @@
 // Library Imports
+import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
-import React from "react";
 
 // Style Imports
 import "./layout.styles.scss";
@@ -8,8 +8,11 @@ import "./layout.styles.scss";
 // Component Imports
 import { Navigation } from "../navigation/navigation.component";
 import Header from "../../components/header/header.component";
+import { context } from "../../contexts/UserContext";
 
 export const Layout = () => {
+  const { userName } = useContext(context);
+  console.log(userName);
   return (
     <div className="layout">
       <Navigation className="navigation" />

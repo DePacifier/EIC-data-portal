@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { TextField, Button, Stack } from "@mui/material";
 
+// Style Imports
 import "./home.styles.scss";
+
+// Component Imports
+import { context } from "../../contexts/UserContext";
 
 // Yup Validation and Schema Import
 import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "./validation-schema";
 
 const HomePage = () => {
+  // User Context with setter
+  const { setUserName } = useContext(context);
+
   const {
     register,
     handleSubmit,
@@ -23,7 +30,15 @@ const HomePage = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+
+    // #1. Make request to API for user verification
+    // if Valid
+    // #2. Set use context to the value
+    setUserName(data);
     navigate("/dashboard");
+
+    // else
+    // Show error
   };
 
   function handleForgotPassword() {

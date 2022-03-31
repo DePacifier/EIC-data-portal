@@ -20,6 +20,7 @@ import ErrorPage from "./pages/error/error.page";
 
 // Mui Theme
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import UserContext from "./contexts/UserContext";
 const theme = createTheme();
 
 function App() {
@@ -29,27 +30,32 @@ function App() {
         <BrowserRouter>
           <Routes>
             (Public Paths)
-            <Route path="/" element={<HomePage />} />
-            <Route path="/request-data" element={<RequestData />} />
-            <Route path="/forget-password" element={<ForgetPassword />} />
-            <Route
-              path="/forget-password/:changeID"
-              element={<ForgetPassword pass={true} />}
-            />
-            (Similar Layout Pages)
-            <Route element={<Layout />}>
-              (Common Authenticated Routes) (DashboardPage)
-              <Route path="/dashboard" element={<DashboardPage />} />
-              (Authorization Based Routes) (AddInvestmentPage)
-              <Route path="/add-investment" element={<AddInvestmentPage />} />
-              (DataCentersPage)
-              <Route path="/data-center" element={<DataCenterPage />} />
-              (DataRequestsPage)
-              <Route path="/data-requests" element={<DataRequestPage />} />
-              (AddUserPage)
-              <Route path="/admin/add-user" element={<AddUserPage />} />
-              (ManageUsersPage)
-              <Route path="/admin/manage-users" element={<ManageUsersPage />} />
+            <Route element={<UserContext />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/request-data" element={<RequestData />} />
+              <Route path="/forget-password" element={<ForgetPassword />} />
+              <Route
+                path="/forget-password/:changeID"
+                element={<ForgetPassword pass={true} />}
+              />
+              (Similar Layout Pages)
+              <Route element={<Layout />}>
+                (Common Authenticated Routes) (DashboardPage)
+                <Route path="/dashboard" element={<DashboardPage />} />
+                (Authorization Based Routes) (AddInvestmentPage)
+                <Route path="/add-investment" element={<AddInvestmentPage />} />
+                (DataCentersPage)
+                <Route path="/data-center" element={<DataCenterPage />} />
+                (DataRequestsPage)
+                <Route path="/data-requests" element={<DataRequestPage />} />
+                (AddUserPage)
+                <Route path="/admin/add-user" element={<AddUserPage />} />
+                (ManageUsersPage)
+                <Route
+                  path="/admin/manage-users"
+                  element={<ManageUsersPage />}
+                />
+              </Route>
             </Route>
             (Page Not Found Page)
             <Route path="*" element={<ErrorPage />} />
